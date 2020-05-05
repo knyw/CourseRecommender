@@ -15,7 +15,7 @@ var mysql = require("mysql");
 dotenv.config();
 
 var app = express();
-const port = 4000;
+const port = 10010;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
