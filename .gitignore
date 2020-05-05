@@ -1,0 +1,6 @@
+# .gitignore
+.env
+.DS_Store
+node_modules
+scripts/.ipynb_checkpoints/
+scripts/scraps/
