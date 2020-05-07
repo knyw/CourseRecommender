@@ -9,9 +9,9 @@ const saltRounds = 10;
 
 router.get("/", function (req, res) {
     if (req.session.loggedIn == true) {
-        res.redirect("home");
+        res.redirect("./home");
     } else {
-        res.render("login");
+        res.render("./login");
     }
 });
 
@@ -47,7 +47,7 @@ router.post("/auth", function (req, res) {
                     if (resultBcrypt) {
                         req.session.loggedIn = true;
                         req.session.studentId = result[0].student_id;
-                        res.redirect("/");
+                        res.redirect("./");
                     } else {
                         console.log(err);
                         res.send("Incorrect Email and/or Password!");
@@ -76,14 +76,14 @@ router.post("/create", function (req, res) {
             if (error) throw error;
             req.session.loggedIn = true;
             req.session.studentId = result.insertId;
-            res.redirect("/");
+            res.redirect("./");
         });
     });
 });
 
 router.get("/signout", function (req, res) {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("./");
 });
 
 module.exports = router;

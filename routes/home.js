@@ -21,9 +21,9 @@ var spawn = require("child_process").spawn;
 
 router.get("/", function (req, res) {
     if (req.session.loggedIn != true) {
-        res.redirect("/");
+        res.redirect("./");
     } else {
-        res.render("home");
+        res.render("./home");
     }
 });
 
@@ -103,7 +103,7 @@ router.post("/addCourse", function (req, res) {
     if (req.session.loggedIn == true) {
         const connection = req.app.locals.connection;
         connection.query("INSERT INTO `taken_course` (`student_id`, `level_id`, `term_id`, `course_id`, `grade_code`) VALUES (?, ?, ?, ?, ?);", [req.session.studentId, req.body.levelId, req.body.termId, req.body.courseId, req.body.gradeId], function (error, result) {
-            res.redirect("/home");
+            res.redirect("./home");
             // res.render("", {
 
             // }, function (err, html) {
